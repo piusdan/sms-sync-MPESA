@@ -26,6 +26,6 @@ def create_app(config_name):
 
     # register blueprints
     from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint, url_prefix='/')
+    app.register_blueprint(main_blueprint)
 
     return app

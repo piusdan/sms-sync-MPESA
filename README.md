@@ -28,12 +28,16 @@ Pulls Messags pushed by Ushahidi's SMSsync and displays them in a downladable fo
 `$ pip install -r requirements.txt`
 
 ###### 6. launch the development server
-`$ ./run_app.sh # The app will start at [localhost](http://127.0.0.1:5000/dashboard)`
+`$ ./run_app.sh`
+
+The app will start at [localhost](http://127.0.0.1:5000/dashboard) :smile:
 
 ## To run the worker
 
 ###### 1. Open a new Terminal and repeat procesess 2 and 4(since you have a virtual environment created, just activate it)
 
 ###### 2. Run the worker script
-` $ ./run_worker.sh # Your worker will now launch and will be ready to start receiving tasks
-`
+` $ ./run_worker.sh`
+
+Your worker will now launch and will be ready to start receiving tasks :smile:
+

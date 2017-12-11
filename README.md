@@ -3,7 +3,7 @@ Pulls Messags pushed by Ushahidi's SMSsync and displays them in a downladable fo
 
 ## TODO
 - [ ] Add flask-socket io Intergartion
-- [ ] Register call back to start receiving messages
+- [X] Register call back to start receiving messages
 - [ ] Write Tests
 
 
@@ -41,3 +41,5 @@ The app will start at [localhost](http://127.0.0.1:5000/dashboard) :smile:
 
 Your worker will now launch and will be ready to start receiving tasks :smile:
 
+## SMS Sync Intergration
+* To start receiving synchronize with sms-sync use the callback url [https://<your-hosts>/callbacks/sms-sync]()

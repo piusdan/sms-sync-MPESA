@@ -21,7 +21,7 @@
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table class="table table-hover dataTable js-exportable">
                             <thead>
                             <tr>
                                 <th>TransactionID</th>
@@ -29,6 +29,7 @@
                                 <th>PhoneNumber</th>
                                 <th>Description</th>
                                 <th>date received</th>
+                                <th>date processed</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -38,6 +39,7 @@
                                 <th>PhoneNumber</th>
                                 <th>Description</th>
                                 <th>date received</th>
+                                <th>date processed</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -49,6 +51,7 @@
                                 <th>{{ msg.phoneNumber }}</th>
                                 <th>{{ msg.description }}</th>
                                 <th>{{ message.timestamp }}</th>
+                                <th></th>
                             </tr>
                             {% endwith %}
                             {% endfor %}

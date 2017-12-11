@@ -20,6 +20,10 @@ class Message(db.Model, CRUDMixin):
         return parse_message(self.text)
 
     @staticmethod
+    def by_code(uuid):
+        return Message.query.filter_by(code=uuid).first()
+
+    @staticmethod
     def by_id(id):
         message = Message.query.get(id)
         if message is None:

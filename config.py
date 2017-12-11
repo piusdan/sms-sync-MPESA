@@ -15,7 +15,7 @@ class Config(object):
     SECRET_KEY = os.environ.get('FLASK_SECRET', 'my secret key')
 
     # sqlalchemy configs
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite'))
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql+psycopg2://valhalla:valhalla@localhost/sms-sync')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 

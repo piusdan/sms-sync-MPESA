@@ -43,8 +43,9 @@ def parse_message(message: str) -> dict:
     # get phoneNumber
     phoneNumRegex = re.compile(r'(07|\+2547)\d{8}')
     mo = phoneNumRegex.search(formatted_message)
-    if mo is None: raise ParseError
-    phoneNumber = mo.group()
+    phoneNumber = ''
+    if mo is not None: phoneNumber = mo.group()
+
 
     # get amount
     amountRegex = re.compile(r'Ksh(\d+.00)')

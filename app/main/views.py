@@ -1,11 +1,14 @@
 from flask import render_template, jsonify, make_response
 
+from ..models import Message
+
 from . import main
 
 
 @main.route('/')
 def index():
-    return make_response(jsonify({"message": "connection OK"})), 200
+    messages = Message.query.all()
+    return render_template('index.html', messages=messages)
 
 
 @main.route('/dashboard')

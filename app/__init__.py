@@ -28,4 +28,7 @@ def create_app(config_name):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from .callbacks import callback as callback_blueprint
+    app.register_blueprint(callback_blueprint, url_prefix='/callbacks')
+    
     return app

@@ -10,9 +10,9 @@ import uuid
 def sms_callback():
     api_payload = request.get_json()
     from_ = api_payload.get("from")
-    message_id = api_payload.get("message_id") or str(uuid.uuid1())
+    message_id = api_payload.get("message_id")
     message = api_payload.get("message")
-    if Message.by_code(message_id) is None:
+    if message_id is not None and Message.by_code(message_id) is None:
         try:
             parse_message(message)
         except ParseError as exec:

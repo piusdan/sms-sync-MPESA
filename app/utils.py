@@ -35,10 +35,12 @@ def parse_message(message: str) -> dict:
     formatted_message = ''.join(stripedMsg)
 
     # get status and transactionID
-    status_transRegex = re.compile(r'(.*)(Confirmed|Failed)')
-    mo = status_transRegex.search(formatted_message)
+    status_transRegex = re.compile(r'(.*)(Confirmed|Failed)(.*)')
+    mo = status_transRegex.search(message)
     if mo is None: raise ParseError
-    transactionId, status = mo.groups()
+    transactionId, status, description = mo.groups()
+    description = description.lstrip(".") # remove any preceeding .
+    description = description.strip() # remove any preceeding spaces
 
     # get phoneNumber
     phoneNumRegex = re.compile(r'(07|\+2547)\d{8}')
@@ -63,7 +65,7 @@ def parse_message(message: str) -> dict:
         'transactionID': transactionId,
         'status': status,
         'amount': amount,
-        'description': message.split('. ')[1],
+        'description': description,
         'transactionCost': transactionCost,
         'phoneNumber': phoneNumber
     }

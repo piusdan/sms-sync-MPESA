@@ -16,6 +16,7 @@ def sms_callback():
         try:
             parse_message(message)
         except ParseError as exec:
+            current_app.logger.warn("Failed to save: {}".format(message))
             return jsonify({"payload": {"success": False, "error": "".format(exec)}}), 300
         sms = Message.create(text=message, code=message_id, to_=api_payload.get("sent_to"), from_=from_)
         current_app.logger.warn("{}".format(sms.to_dict()))

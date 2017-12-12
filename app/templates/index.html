@@ -47,10 +47,10 @@
                             {% with msg = message.to_dict() %}
                             <tr>
                                 <th>{{ msg.transactionID }}</th>
-                                <th>{{ msg.status }}</th>
+                                <th><span class="badge {% if msg.status.lower() == 'confirmed' %} bg-orange {% elif msg.status.lower() == 'failed' %} bg-red {% elif msg.status.lower() == 'processed' %} bg-green {% endif %}">{{ msg.status }}</span></th>
                                 <th>{{ msg.phoneNumber }}</th>
                                 <th>{{ msg.description }}</th>
-                                <th>{{ message.timestamp }}</th>
+                                <th>{{ message.timestamp}}</span></th>
                                 <th></th>
                             </tr>
                             {% endwith %}

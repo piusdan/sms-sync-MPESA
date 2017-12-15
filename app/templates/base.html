@@ -13,158 +13,211 @@
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+          type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
     <link href="{{ url_for('static', filename='assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="{{ url_for('static', filename='assets/plugins/node-waves/waves.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/plugins/node-waves/waves.css') }}" rel="stylesheet"/>
 
     <!-- Animation Css -->
-    <link href="{{ url_for('static', filename='assets/plugins/animate-css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/plugins/animate-css/animate.css') }}" rel="stylesheet"/>
 
     <!-- Morris Chart Css-->
-    <link href="{{ url_for('static', filename='assets/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='assets/plugins/morrisjs/morris.css') }}" rel="stylesheet"/>
 
     <!-- Custom Css -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="{{ url_for('static', filename='css/themes/all-themes.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/themes/all-themes.css') }}" rel="stylesheet"/>
     {% endblock %}
 </head>
 
 <body class="theme-teal">
-    <!-- Page Loader -->
-    {% block loader %}
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
+<!-- Page Loader -->
+{% block loader %}
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
                 </div>
             </div>
-            <p>Please wait...</p>
         </div>
+        <p>Please wait...</p>
     </div>
-    {% endblock %}
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!-- Top Bar -->
-    {% block nav_bar %}
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">VENDING POINT - SMS</a>
-            </div>
-
+</div>
+{% endblock %}
+<!-- #END# Page Loader -->
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+<!-- #END# Overlay For Sidebars -->
+<!-- Top Bar -->
+{% block nav_bar %}
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+               data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">VENDING POINT - SMS</a>
         </div>
-    </nav>
-    {% endblock %}
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            {% block left_sidebar %}
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="{{ url_for('static', filename='images/user.png') }}" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
+
+    </div>
+</nav>
+{% endblock %}
+<!-- #Top Bar -->
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        {% block left_sidebar %}
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/user.png') }}" width="48" height="48" alt="User"/>
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                <div class="email">john.doe@example.com</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="javascript:void(0);"><i class="material-icons">settings</i>Manage</a></li>
+                        <li role="seperator" class="divider"></li>
+                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                    </ul>
                 </div>
             </div>
-            <!-- #User Info -->
-            <!-- Menu -->
-            {% block menu %}
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            {% endblock %}
-            <!-- #Menu -->
-            {% block footer %}
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright">
-                    &copy; 2017 <a href="javascript:void(0);">Vending Point - Mpesa</a>.
-                </div>
-                <div class="version">
-                    <b>Version: </b> 1.0.5
-                </div>
-            </div>
-            {% endblock %}
-            <!-- #Footer -->
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        {% block menu %}
+        <div class="menu">
+            <ul class="list">
+                <li class="header">MAIN NAVIGATION</li>
+                <li class="{% block main_nav %}{% endblock %}">
+                    <a href="{{ url_for('main.index')}}">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">supervisor_account</i>
+                        <span>Members</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span>Customers</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Add Bulk</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Add Single</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <span>Staff</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Manage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <span>Add Staff Member</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{% block reports_nav %}{% endblock %}">
+                    <a href="javascript:void()">
+                        <i class="material-icons">trending_up</i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
         {% endblock %}
-        </aside>
-        <!-- #END# Left Sidebar -->
-
-    </section>
-
-    <section class="content">
-        {% block page_content %}
+        <!-- #Menu -->
+        {% block footer %}
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                &copy; 2017 <a href="javascript:void(0);">Vending Point - Mpesa</a>.
+            </div>
+            <div class="version">
+                <b>Version: </b> 1.0.5
+            </div>
+        </div>
         {% endblock %}
-    </section>
-    {% block scripts %}
+        <!-- #Footer -->
+        {% endblock %}
+    </aside>
+    <!-- #END# Left Sidebar -->
 
-    <!-- Jquery Core Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+</section>
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/node-waves/waves.js') }}"></script>
-
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/jquery-countto/jquery.countTo.js') }}"></script>
-
-    <!-- Morris Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/raphael/raphael.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='assets/plugins/morrisjs/morris.js') }}"></script>
-
-    <!-- Custom Js -->
-    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
-    <!-- Demo Js -->
-    <script src="{{ url_for('static', filename='js/demo.js') }}"></script>
-    {{ moment.include_moment() }}
+<section class="content">
+    {% block page_content %}
     {% endblock %}
+</section>
+{% block scripts %}
+
+<!-- Jquery Core Js -->
+<script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
+
+<!-- Select Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
+
+<!-- Slimscroll Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/node-waves/waves.js') }}"></script>
+
+<!-- Jquery CountTo Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/jquery-countto/jquery.countTo.js') }}"></script>
+
+<!-- Morris Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/raphael/raphael.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/plugins/morrisjs/morris.js') }}"></script>
+
+<!-- Custom Js -->
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<!-- Demo Js -->
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+{{ moment.include_moment() }}
+{% endblock %}
 </body>
 
 </html>

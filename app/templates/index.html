@@ -5,6 +5,7 @@
 <link href="{{ url_for('static', filename='assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}"
       rel="stylesheet">
 {% endblock %}
+{% block main_nav %}active{% endblock %}
 {% block page_content %}
 <div class="container-fluid">
     <div class="block-header">
@@ -16,8 +17,21 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        Mpesa Messages
+                        Mpesa Messages <span class="badge bg-cyan">New {{ new.count() }}</span><small>Incoming Messages will appear here</small>
+
                     </h2>
+                    <ul class="header-dropdown m-r-0">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="material-icons">info_outline</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="material-icons">help_outline</i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,6 +44,8 @@
                                 <th>Description</th>
                                 <th>date received</th>
                                 <th>date processed</th>
+                                <th>processed by</th>
+                                <th>Customer</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -37,21 +53,36 @@
                                 <th>TransactionID</th>
                                 <th>Status</th>
                                 <th>PhoneNumber</th>
-                                <th>Description</th>
+                                <th>description</th>
                                 <th>date received</th>
                                 <th>date processed</th>
+                                <th>processed by</th>
+                                <th>Customer</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             {% for message in messages %}
                             {% with msg = message.to_dict() %}
                             <tr>
-                                <th>{{ msg.transactionID }}</th>
-                                <th><span class="badge {% if msg.status.lower() == 'confirmed' %} bg-orange {% elif msg.status.lower() == 'failed' %} bg-red {% elif msg.status.lower() == 'processed' %} bg-green {% endif %}">{{ msg.status }}</span></th>
-                                <th>{{ msg.phoneNumber }}</th>
-                                <th>{{ msg.description }}</th>
-                                <th>{{ message.timestamp}}</span></th>
-                                <th></th>
+                                <td>{{ msg.transactionID }}</td>
+                                <td><span
+                                        class="badge {% if msg.status.lower() == 'confirmed' %} bg-orange {% elif msg.status.lower() == 'failed' %} bg-red {% elif msg.status.lower() == 'processed' %} bg-green {% endif %}">{{ msg.status }}</span>
+                                </td>
+                                <td>{{ msg.phoneNumber }}</td>
+                                <td>{{ msg.description }}</td>
+                                <td>{{ message.timestamp}}</td>
+                                <td>{% if message.processed_on == None %}
+                                    <span class="badge bg-blue">pending</span>
+                                    {% else %}
+                                    {{ message.processed_on }}
+                                {% endif %}
+                                </td>
+                                <td><span class="badge bg-blue">pending</span></td>
+                                <td>{% if message.customer %}{{ "{} {}".format(message.customer.name, message.customer.phoneNumber) }}{% else %}
+                                    <span class="badge bg-blue">pending</span>
+                                {% endif %}
+                                </td>
+
                             </tr>
                             {% endwith %}
                             {% endfor %}

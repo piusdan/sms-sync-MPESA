@@ -1,12 +1,14 @@
 from flask import Flask
 from flask_moment import Moment
 from flask_redis import FlaskRedis
+from flask_socketio import SocketIO, emit
 
 from config import CONFIG
 from .database import db
 
 redis = FlaskRedis()
 moment = Moment()
+socketio = SocketIO()
 
 
 def create_app(config_name):
@@ -23,6 +25,9 @@ def create_app(config_name):
 
     # intialize flask moment for formating of datetimes
     moment.init_app(app)
+
+    # intialise socket IO
+    socketio.init_app(app)
 
     # register blueprints
     from .main import main as main_blueprint

@@ -1,4 +1,5 @@
 from flask import render_template, jsonify, make_response
+from flask_login import login_required
 
 from ..models import Message
 
@@ -17,4 +18,16 @@ def dashboard():
     return render_template('index.html')
 
 
+@main.route('/reset', methods=['DELETE'])
+def reset():
+    """Clears all messages"""
+    for message in Message.query.all():
+        message.delete()
+    response = jsonify({"data": "App Reset"})
+    return response, 200
 
+
+@main.before_request
+@login_required
+def init_session():
+    pass

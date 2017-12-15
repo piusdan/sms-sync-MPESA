@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block meats %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% endblock %}
+    <title>{% block title %}Sign In | Vending Point -SMS{% endblock %}</title>
+    {% block styles %}
+    <!-- Favicon-->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{{ url_for('static', filename='assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{{ url_for('static', filename='assets/plugins/node-waves/waves.css') }}" rel="stylesheet"/>
+
+    <!-- Animation Css -->
+    <link href="{{ url_for('static', filename='assets/plugins/animate-css/animate.css') }}" rel="stylesheet"/>
+
+    <!-- Morris Chart Css-->
+    <link href="{{ url_for('static', filename='assets/plugins/morrisjs/morris.css') }}" rel="stylesheet"/>
+
+    <!-- Custom Css -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="{{ url_for('static', filename='css/themes/all-themes.css') }}" rel="stylesheet"/>
+    {% endblock %}
+</head>
+
+<body class="{% block body_attrbs %}login-page{% endblock %}">
+    {% block page_content %}
+    {% endblock %}
+    {% block scripts %}
+    <!-- Jquery Core Js -->
+    <script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{{ url_for('static', filename='assets/plugins/node-waves/waves.js') }}"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="{{ url_for('static', filename='assets/plugins/jquery-validation/jquery.validate.js') }}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/examples/sign-in.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>

@@ -37,25 +37,35 @@
 </head>
 
 <body class="{% block body_attrbs %}login-page{% endblock %}">
-    {% block page_content %}
-    {% endblock %}
-    {% block scripts %}
-    <!-- Jquery Core Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %} {% for category, message in messages %}
+<div class="alert alert-{{ category }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% block page_content %}
+{% endblock %}
+{% block scripts %}
+<!-- Jquery Core Js -->
+<script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
+<!-- Bootstrap Core Js -->
+<script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/node-waves/waves.js') }}"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/node-waves/waves.js') }}"></script>
 
-    <!-- Validation Plugin Js -->
-    <script src="{{ url_for('static', filename='assets/plugins/jquery-validation/jquery.validate.js') }}"></script>
+<!-- Validation Plugin Js -->
+<script src="{{ url_for('static', filename='assets/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
-    <!-- Custom Js -->
-    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/pages/examples/sign-in.js') }}"></script>
-    {% endblock %}
+<!-- Custom Js -->
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pages/examples/sign-in.js') }}"></script>
+{% endblock %}
 </body>
 
 </html>

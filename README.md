@@ -30,6 +30,9 @@ Pulls Messags pushed by Ushahidi's SMSsync and displays them in a downladable fo
 ###### 6. launch the development server
 `$ ./run_app.sh`
 
+#### 7. On onother terminal report the process of setting the FLASK_APP environment variable
+#### 8. create a super user with `flask superuser`
+#### 9. you will now be able to login
 The app will start at [localhost](http://127.0.0.1:5000/dashboard) :smile:
 
 ## To run the worker

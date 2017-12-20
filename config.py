@@ -19,6 +19,9 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
+    # admin
+    FLASK_ADMIN = os.environ.get("APP_ADMIN", 'npiusdan@gmail.com')
+
     # ssl
     SSL_DISABLE = True
 

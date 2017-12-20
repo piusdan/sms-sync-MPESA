@@ -85,14 +85,15 @@
                 <img src="{{ url_for('static', filename='images/user.png') }}" width="48" height="48" alt="User"/>
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                <div class="email">john.doe@example.com</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Logged in as {{ current_user.name|lower }}
+                </div>
+                <div class="email">{{ current_user.auth.email }}</div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
                         <li><a href="javascript:void(0);"><i class="material-icons">settings</i>Manage</a></li>
                         <li role="seperator" class="divider"></li>
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,19 +121,9 @@
                                 <span>Customers</span>
                             </a>
                             <ul class="ml-menu">
-                                <li>
-                                    <a href="javascript:void(0);">
+                                <li class="{% block manage_customer %}{% endblock %}">
+                                    <a href="{{ url_for('.manage_customers') }}">
                                         <span>Manage</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Add Bulk</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Add Single</span>
                                     </a>
                                 </li>
                             </ul>
@@ -142,14 +133,9 @@
                                 <span>Staff</span>
                             </a>
                             <ul class="ml-menu">
-                                <li>
-                                    <a href="javascript:void(0);">
+                                <li class="{% block manage_staff %}{% endblock %}">
+                                    <a href="{{ url_for('.manage_staff') }}">
                                         <span>Manage</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <span>Add Staff Member</span>
                                     </a>
                                 </li>
                             </ul>
@@ -185,6 +171,17 @@
 </section>
 
 <section class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %} {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     {% block page_content %}
     {% endblock %}
 </section>

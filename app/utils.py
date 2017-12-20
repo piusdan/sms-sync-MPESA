@@ -1,5 +1,8 @@
+import datetime
 import re
-import logging, datetime
+from urllib.parse import urlparse, urljoin
+
+from flask import request
 
 
 def kenyatime():
@@ -70,6 +73,13 @@ def parse_message(message: str) -> dict:
         'phoneNumber': phoneNumber
     }
 
+
+def is_safe_url(target):
+    """Ensure redirects, redirect to same server"""
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and \
+           ref_url.netloc == test_url.netloc
 
 # if __name__ == '__main__':
 # """Run Doctests"""

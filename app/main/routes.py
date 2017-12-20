@@ -26,8 +26,23 @@ def reset():
     response = jsonify({"data": "App Reset"})
     return response, 200
 
-
 @main.before_request
 @login_required
 def init_session():
     pass
+
+@main.route('/staff-members/add', methods=['get', 'post'])
+@login_required
+def add_staff():
+    return jsonify({"payload":"Updated"}), 200
+
+@main.route('/staff-members/manage', methods=['get', 'post'])
+@login_required
+def manage_staff():
+    return render_template('staff/manage.html')
+
+
+@main.route('/customers/manage', methods=['get', 'post'])
+@login_required
+def manage_customers():
+    return render_template('/customers/manage.html')

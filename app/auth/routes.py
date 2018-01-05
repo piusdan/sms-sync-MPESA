@@ -13,8 +13,10 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user_auth = Auth.query.filter_by(email=form.email.data).first()
-        user = user_auth.user
-        if user_auth is not None and user_auth.verify_password(form.password.data) and user is not None:
+        user = None
+        if user_auth is not None:
+            user = user_auth.user
+        if user is not None and user_auth.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             next = request.args.get('next')
             if not is_safe_url(next):
